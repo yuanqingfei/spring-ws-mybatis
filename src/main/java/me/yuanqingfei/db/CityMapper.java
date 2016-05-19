@@ -9,4 +9,7 @@ public interface CityMapper {
 	
 	@Insert("insert into c_city (city_id, city_name) values(#{cityId}, #{cityName})")
 	int insertCity(City city);
+
+//	@Select("SELECT * FROM orders WHERE seqNo = #{seqNo}")
+//	BackendOrder getOrder(@Param("seqNo") String seqNo);
 }

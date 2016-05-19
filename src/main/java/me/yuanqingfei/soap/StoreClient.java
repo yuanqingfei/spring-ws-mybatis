@@ -42,7 +42,7 @@ public class StoreClient extends WebServiceGatewaySupport {
 		request.setSignMsg(signMsg);
 
 		GetQueryPHDIStoreInfoResponse response = (GetQueryPHDIStoreInfoResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://devftp.lansum.com/bohservice/PHDIWebService.asmx", 
+				.marshalSendAndReceive("http://devftp.xxx.com/bohservice/PHDIWebService.asmx",
 						request,
 						new SoapActionCallback("http://tempuri.org/GetQueryPHDIStoreInfo"));
 		return response;
@@ -58,32 +58,16 @@ public class StoreClient extends WebServiceGatewaySupport {
 
 		request.setJson(jsonObj.toString());
 		GetReceivingResultsResponse response = (GetReceivingResultsResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://devftp.lansum.com/bohservice/PHDIWebService.asmx", 
+				.marshalSendAndReceive("http://devftp.xxx.com/bohservice/PHDIWebService.asmx",
 						request,
 						new SoapActionCallback("http://tempuri.org/GetReceivingResults"));
 		return response;
 	}
 
-	// public static void main(String args[]){
-	// GregorianCalendar calendar =
-	// (GregorianCalendar)GregorianCalendar.getInstance();
-	// XMLGregorianCalendar dateNow = new XMLGregorianCalendarImpl(calendar);
-	// String result = createMsg(USER_NAME, PASSWORD, dateNow);
-	// System.out.println(result);
-	// }
 	private static String createMsg(String userName, String password, XMLGregorianCalendar dateNow) {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String orginal = userName + password + format.format(dateNow.toGregorianCalendar().getTime());
 		return DigestUtils.md5DigestAsHex(orginal.getBytes());
-	}
-
-	public JSONObject getJsonObjectFromResponse(GetQueryPHDIStoreInfoResponse resp) {
-		String result = resp.getGetQueryPHDIStoreInfoResult();
-		if (result == null) {
-			return null;
-		}
-		JSONObject jsonObj = new JSONObject(result);
-		return jsonObj;
 	}
 
 	public void printResponseToFile(GetQueryPHDIStoreInfoResponse resp, String fileName) {

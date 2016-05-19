@@ -11,34 +11,21 @@ import me.yuanqingfei.db.pojo.City;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import me.yuanqingfei.WebServiceApplication;
+import me.yuanqingfei.Application;
 
-//import com.alibaba.fastjson.JSON;
-//import com.alibaba.fastjson.JSONArray;
-//import com.alibaba.fastjson.JSONObject;
 
-public class DbPersistence {
-	
-//	SqlSessionFactoryBean 
-	
+public class DataPreparation {
+
 	private Set<City> citySet = new HashSet<City>();
 
-	public DbPersistence(){
-		setupBeans();
-	}
-	
-	private void setupBeans(){
-		String jsonString = getJsonString();
+	public void setupBeans(String jsonString){
+//		String jsonString = getJsonString();
 		
 		if(jsonString == null){
 			System.out.println("JSON String is empty. Stop. ");
 			return;
 		}
-		
-//		JSONObject jsonObj = JSON.parseObject(jsonString);
-//		String storeListString = (String)jsonObj.get("StoreList");
-//		JSONArray storeList = JSON.parseArray(storeListString);
-		
+
 		JSONObject jsonObj = new JSONObject(jsonString);
 		String storeListString = (String)jsonObj.get("StoreList");
 		JSONArray storeList = new JSONArray(storeListString);
@@ -68,11 +55,6 @@ public class DbPersistence {
 			
 
 		}
-//		System.out.println("city size: " + citySet.size());
-//		System.out.println("shop size: " + shopSet.size());
-//		System.out.println("market size: " + marketSet.size());
-//		System.out.println("city market size: " + cmSet.size());
-//		System.out.println("city shop size: " + csSet.size());
 	}
 
 	public Set<City> getCitySet() {
@@ -81,7 +63,7 @@ public class DbPersistence {
 
 
 	private String getJsonString() {
-		File file = new File(WebServiceApplication.OUTPUT_FOLDER + "stores_1.txt");
+		File file = new File(Application.OUTPUT_FOLDER + "stores_1.txt");
 		InputStreamReader isr = null;
 		String jsonString = null;
 		try {

@@ -96,10 +96,10 @@
   </wsdl:binding>
   <wsdl:service name="PHDIWebService">
     <wsdl:port name="PHDIWebServiceSoap" binding="tns:PHDIWebServiceSoap">
-      <soap:address location="http://devftp.lansum.com/bohservice/PHDIWebService.asmx" />
+      <soap:address location="http://devftp.xxx.com/bohservice/PHDIWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="PHDIWebServiceSoap12" binding="tns:PHDIWebServiceSoap12">
-      <soap12:address location="http://devftp.lansum.com/bohservice/PHDIWebService.asmx" />
+      <soap12:address location="http://devftp.xxx.com/bohservice/PHDIWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
